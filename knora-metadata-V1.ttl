@@ -1,0 +1,454 @@
+@prefix : <http://www.knora.org/ontology/metadata#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix disco: <http://rdf-vocabulary.ddialliance.org/discovery#> .
+@prefix frapo: <http://purl.org/cerif/frapo/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix knora-meta: <http://www.knora.org/ontology/metadata#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@base <http://www.knora.org/ontology/metadata> .
+
+<http://www.knora.org/ontology/metadata> rdf:type owl:Ontology ;
+                                          owl:imports <http://vocab.deri.ie/void> ,
+                                                      <http://www.w3.org/2002/07/owl> ,
+                                                      <http://www.w3.org/ns/dcat> ,
+                                                      <http://www.w3.org/2000/01/rdf-schema#> ,
+                                                      <http://purl.org/cerif/frapo/> ,
+                                                      <http://rdf-vocabulary.ddialliance.org/discovery> ,
+                                                      <http://purl.org/dc/terms/> ,
+                                                      <https://www.w3.org/TR/turtle/> ,
+                                                      <http://xmlns.com/foaf/0.1/> .
+
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://purl.org/dc/terms/accessRights
+<http://purl.org/dc/terms/accessRights> rdf:type owl:ObjectProperty ;
+                                        rdfs:subPropertyOf <http://purl.org/dc/terms/rights> ;
+                                        rdfs:range <http://purl.org/dc/terms/RightsStatement> ;
+                                        <http://purl.org/dc/terms/description> "Access Rights may include information regarding access or restrictions based on privacy, security, or other policies."@en ;
+                                        rdfs:comment "Information about who can access the resource or an indication of its security status."@en ;
+                                        rdfs:label "Access Rights"@en ;
+                                        rdfs:isDefinedBy <http://purl.org/dc/terms/> .
+
+
+###  http://purl.org/dc/terms/contributor
+<http://purl.org/dc/terms/contributor> rdf:type owl:ObjectProperty ;
+                                       rdfs:range <http://purl.org/dc/terms/Agent> ;
+                                       rdfs:comment "An entity responsible for making contributions to the resource."@en ;
+                                       rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+                                       <http://purl.org/dc/terms/description> "Examples of a Contributor include a person, an organization, or a service."@en ;
+                                       rdfs:label "Contributor"@en .
+
+
+###  http://purl.org/dc/terms/coverage
+<http://purl.org/dc/terms/coverage> rdf:type owl:ObjectProperty ;
+                                    rdfs:range <http://purl.org/dc/terms/LocationPeriodOrJurisdiction> ;
+                                    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+                                    rdfs:label "Coverage"@en ;
+                                    <http://purl.org/dc/terms/description> "Spatial topic and spatial applicability may be a named place or a location specified by its geographic coordinates. Temporal topic may be a named period, date, or date range. A jurisdiction may be a named administrative entity or a geographic place to which the resource applies. Recommended best practice is to use a controlled vocabulary such as the Thesaurus of Geographic Names [TGN]. Where appropriate, named places or time periods can be used in preference to numeric identifiers such as sets of coordinates or date ranges."@en ;
+                                    rdfs:comment "The spatial or temporal topic of the resource, the spatial applicability of the resource, or the jurisdiction under which the resource is relevant."@en .                              
+
+
+###  http://purl.org/dc/terms/creator
+<http://purl.org/dc/terms/creator> rdf:type owl:ObjectProperty ;
+                                   rdfs:subPropertyOf <http://purl.org/dc/terms/contributor> ;
+                                   rdfs:range <http://purl.org/dc/terms/Agent> ;
+                                   rdfs:comment "An entity primarily responsible for making the resource."@en ;
+                                   rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+                                   rdfs:label "Creator"@en ;
+                                   <http://purl.org/dc/terms/description> "Examples of a Creator include a person, an organization, or a service."@en .
+
+
+###  http://purl.org/dc/terms/format
+<http://purl.org/dc/terms/format> rdfs:range <http://purl.org/dc/terms/MediaTypeOrExtent> ;
+                                  rdfs:comment "The file format, physical medium, or dimensions of the resource."@en ;
+                                  <http://purl.org/dc/terms/description> "Examples of dimensions include size and duration. Recommended best practice is to use a controlled vocabulary such as the list of Internet Media Types [MIME]."@en ;
+                                  rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+                                  rdfs:label "Format"@en .
+
+
+###  http://purl.org/dc/terms/language
+<http://purl.org/dc/terms/language> rdf:type owl:ObjectProperty ;
+                                    rdfs:range <http://purl.org/dc/terms/LinguisticSystem> ;
+                                    rdfs:label "Language"@en ;
+                                    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+                                    <http://purl.org/dc/terms/description> "Recommended best practice is to use a controlled vocabulary such as RFC 4646 [RFC4646]."@en ;
+                                    rdfs:comment "A language of the resource."@en .
+
+
+###  http://purl.org/dc/terms/license
+<http://purl.org/dc/terms/license> rdf:type owl:ObjectProperty ;
+                                   rdfs:subPropertyOf <http://purl.org/dc/terms/rights> ;
+                                   rdfs:range <http://purl.org/dc/terms/LicenseDocument> ;
+                                   rdfs:label "License"@en ;
+                                   rdfs:comment "A legal document giving official permission to do something with the resource."@en ;
+                                   rdfs:isDefinedBy <http://purl.org/dc/terms/> .
+
+
+###  http://purl.org/dc/terms/publisher
+<http://purl.org/dc/terms/publisher> rdf:type owl:ObjectProperty ;
+                                     rdfs:range <http://purl.org/dc/terms/Agent> ;
+                                     rdfs:label "Publisher"@en ;
+                                     <http://purl.org/dc/terms/description> "Examples of a Publisher include a person, an organization, or a service."@en ;
+                                     rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+                                     rdfs:comment "An entity responsible for making the resource available."@en .
+
+
+###  http://purl.org/dc/terms/rights
+<http://purl.org/dc/terms/rights> rdf:type owl:ObjectProperty ;
+                                  rdfs:range <http://purl.org/dc/terms/RightsStatement> ;
+                                  rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+                                  rdfs:label "Rights"@en ;
+                                  rdfs:comment "Information about rights held in and over the resource."@en ;
+                                  <http://purl.org/dc/terms/description> "Typically, rights information includes a statement about various property rights associated with the resource, including intellectual property rights."@en .
+                                  
+
+
+###  http://purl.org/dc/terms/spatial
+<http://purl.org/dc/terms/spatial> rdf:type owl:ObjectProperty ;
+                                   rdfs:subPropertyOf <http://purl.org/dc/terms/coverage> ;
+                                   rdfs:range <http://purl.org/dc/terms/Location> ;
+                                   rdfs:label "Spatial Coverage"@en ;
+                                   rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+                                   rdfs:comment "Spatial characteristics of the resource."@en .
+
+
+###  http://purl.org/dc/terms/temporal
+<http://purl.org/dc/terms/temporal> rdf:type owl:ObjectProperty ;
+                                    rdfs:subPropertyOf <http://purl.org/dc/terms/coverage> ;
+                                    rdfs:range <http://purl.org/dc/terms/PeriodOfTime> ;
+                                    rdfs:label "Temporal Coverage"@en ;
+                                    rdfs:comment "Temporal characteristics of the resource."@en ;
+                                    rdfs:isDefinedBy <http://purl.org/dc/terms/> .
+
+
+###  http://www.knora.org/ontology/metadata#isDefinedBy
+knora-meta:isDefinedBy rdf:type owl:ObjectProperty ;
+				rdfs:subPropertyOf <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> ;
+                rdfs:range owl:Ontology ;
+                rdfs:label "Project-specific ontology"@en ;
+                rdfs:comment "An ontology describing a dataset."@en .
+
+
+###  http://www.knora.org/ontology/metadata#isMemberOf
+knora-meta:isMemberOf rdf:type owl:ObjectProperty ;
+                rdfs:range foaf:Organization ;
+                rdfs:domain foaf:Person ;
+                rdfs:label "Institution"@en ;
+                rdfs:comment "An institution the creator of a dataset is member of."@en .
+
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://purl.org/dc/terms/description
+<http://purl.org/dc/terms/description> rdf:type owl:DatatypeProperty ;
+									   rdfs:range rdfs:Literal ;
+									   rdfs:label "Description"@en ;
+                                       rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+                                       rdfs:comment "An account of the resource."@en ;
+                                       <http://purl.org/dc/terms/description> "Description may include but is not limited to: an abstract, a table of contents, a graphical representation, or a free-text account of the resource."@en .
+
+
+###  http://www.knora.org/ontology/metadata#versionInfo
+knora-meta:versionInfo rdf:type owl:DatatypeProperty ;
+				rdfs:subPropertyOf <http://www.w3.org/2002/07/owl#versionInfo> ;
+                rdfs:range rdfs:Literal ;
+                rdfs:label "Version information"@en ;
+                rdfs:comment "An information on the version of the distribution of dataset."@en .
+
+
+###  http://www.knora.org/ontology/metadata#status
+knora-meta:status rdf:type owl:DatatypeProperty ;
+				  rdfs:subPropertyOf <http://www.w3.org/ns/adms#status> ;
+                  rdfs:comment "Current status of the research project which produced the dataset."@en ;
+				  rdfs:range rdfs:Literal ;
+				  rdfs:label "Status"@en .
+
+
+###  http://purl.org/dc/terms/date
+<http://purl.org/dc/terms/date> rdfs:range rdfs:Literal ;
+								rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+                                rdfs:comment "A point or period of time associated with an event in the lifecycle of the resource."@en ;
+                                <http://purl.org/dc/terms/description> "Date may be used to express temporal information at any level of granularity.  Recommended best practice is to use an encoding scheme, such as the W3CDTF profile of ISO 8601 [W3CDTF]."@en ;
+                                rdfs:label "Date"@en .
+
+
+###  http://purl.org/dc/terms/identifier
+<http://purl.org/dc/terms/identifier> rdfs:range rdfs:Literal ;
+                                      rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+                                      <http://purl.org/dc/terms/description> "Recommended best practice is to identify the resource by means of a string conforming to a formal identification system. "@en ;
+                                      rdfs:comment "An unambiguous reference to the resource within a given context."@en ;
+                                      rdfs:label "Identifier"@en .
+
+
+###  http://purl.org/dc/terms/issued
+<http://purl.org/dc/terms/issued> rdf:type owl:DatatypeProperty ;
+                                  rdfs:subPropertyOf <http://purl.org/dc/terms/date> ;
+                                  rdfs:range rdfs:Literal ;
+                                  rdfs:comment "Date of formal issuance (e.g., publication) of the resource."@en ;
+                                  rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+                                  rdfs:label "Date Issued"@en .
+
+
+###  http://purl.org/dc/terms/title
+<http://purl.org/dc/terms/title> rdf:type owl:DatatypeProperty ;
+                                 rdfs:range rdfs:Literal ;
+								 rdfs:label "Title"@en ;
+                                 rdfs:comment "A name given to the resource."@en ;
+                                 rdfs:isDefinedBy <http://purl.org/dc/terms/> .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+
+###  http://purl.org/dc/terms/Agent
+<http://purl.org/dc/terms/Agent> rdf:type owl:Class ;
+								 rdfs:label "Agent"@en ;
+                                 rdfs:comment "A resource that acts or has the power to act."@en ;
+                                 rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+                                 <http://purl.org/dc/terms/description> "Examples of Agent include person, organization, and software agent."@en .
+
+
+###  http://purl.org/dc/terms/FileFormat
+<http://purl.org/dc/terms/FileFormat> rdf:type owl:Class ;
+                                      rdfs:subClassOf <http://purl.org/dc/terms/MediaType> ;
+                                      <http://purl.org/dc/terms/description> "Examples include the formats defined by the list of Internet Media Types."@en ;
+                                      rdfs:label "File Format"@en ;
+                                      rdfs:comment "A digital resource format."@en ;
+                                      rdfs:isDefinedBy <http://purl.org/dc/terms/> .
+
+
+### http://www.w3.org/2006/vcard/ns#Kind
+<http://www.w3.org/2006/vcard/ns#Kind> rdf:type owl:Class ;
+									   rdfs:label "Kind"@en ;
+	                                   rdfs:comment "The parent class for all objects."@en ;
+	                                   rdfs:isDefinedBy <http://www.w3.org/2006/vcard/ns> .
+
+
+###  http://purl.org/dc/terms/LicenseDocument
+<http://purl.org/dc/terms/LicenseDocument> rdf:type owl:Class ;
+                                           rdfs:subClassOf <http://purl.org/dc/terms/RightsStatement> ;
+                                           rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+                                           rdfs:label "License Document"@en ;
+                                           rdfs:comment "A legal document giving official permission to do something with a Resource."@en .
+
+
+###  http://purl.org/dc/terms/LinguisticSystem
+<http://purl.org/dc/terms/LinguisticSystem> rdf:type owl:Class ;
+                                            <http://purl.org/dc/terms/description> "Examples include written, spoken, sign, and computer languages."@en ;
+                                            rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+                                            rdfs:comment "A system of signs, symbols, sounds, gestures, or rules used in communication."@en ;
+                                            rdfs:label "Linguistic System"@en .
+
+
+###  http://purl.org/dc/terms/Location
+<http://purl.org/dc/terms/Location> rdf:type owl:Class ;
+                                    rdfs:subClassOf <http://purl.org/dc/terms/LocationPeriodOrJurisdiction> ;
+                                    rdfs:label "Location"@en ;
+                                    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+                                    rdfs:comment "A spatial region or named place."@en .
+
+
+###  http://purl.org/dc/terms/LocationPeriodOrJurisdiction
+<http://purl.org/dc/terms/LocationPeriodOrJurisdiction> rdf:type owl:Class ;
+														rdfs:label "Location, Period, or Jurisdiction"@en ;
+                                                        rdfs:comment "A location, period of time, or jurisdiction."@en ;
+                                                        rdfs:isDefinedBy <http://purl.org/dc/terms/> .
+
+
+###  http://purl.org/dc/terms/MediaType
+<http://purl.org/dc/terms/MediaType> rdf:type owl:Class ;
+                                     rdfs:subClassOf <http://purl.org/dc/terms/MediaTypeOrExtent> ;
+                                     rdfs:comment "A file format or physical medium."@en ;
+                                     rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+                                     rdfs:label "Media Type"@en .
+
+
+###  http://purl.org/dc/terms/MediaTypeOrExtent
+<http://purl.org/dc/terms/MediaTypeOrExtent> rdf:type owl:Class ;
+											 rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+                                             rdfs:comment "A media type or extent."@en ;
+                                             rdfs:label "Media Type or Extent"@en .
+
+
+###  http://purl.org/dc/terms/PeriodOfTime
+<http://purl.org/dc/terms/PeriodOfTime> rdf:type owl:Class ;
+                                        rdfs:subClassOf <http://purl.org/dc/terms/LocationPeriodOrJurisdiction> ;
+                                        rdfs:comment "An interval of time that is named or defined by its start and end dates."@en ;
+                                        rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+                                        rdfs:label "Period of Time"@en .
+
+
+###  http://purl.org/dc/terms/RightsStatement
+<http://purl.org/dc/terms/RightsStatement> rdf:type owl:Class ;
+										   rdfs:label "Rights Statement"@en ;
+                                           rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+                                           rdfs:comment "A statement about the intellectual property rights (IPR) held in or over a Resource, a legal document giving official permission to do something with a resource, or a statement about access rights."@en .
+
+
+###  http://www.w3.org/ns/dcat#Dataset
+dcat:Dataset rdfs:subClassOf [ rdf:type owl:Restriction ;
+                               owl:onProperty frapo:isFundedBy ;
+                               owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+                               owl:onClass foaf:Agent
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty <http://purl.org/dc/terms/contributor> ;
+                               owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+                               owl:onClass foaf:Person
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty <http://purl.org/dc/terms/creator> ;
+                               owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onClass foaf:Person
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty <http://purl.org/dc/terms/description> ;
+                               owl:minCardinality "1"^^xsd:nonNegativeInteger
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty <http://purl.org/dc/terms/language> ;
+                               owl:minCardinality "0"^^xsd:nonNegativeInteger
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty <http://purl.org/dc/terms/publisher> ;
+                               owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onClass foaf:Organization
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty <http://purl.org/dc/terms/spatial> ;
+                               owl:minCardinality "0"^^xsd:nonNegativeInteger
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty <http://purl.org/dc/terms/temporal> ;
+                               owl:minCardinality "0"^^xsd:nonNegativeInteger
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty knora-meta:status ;
+                               owl:minCardinality "1"^^xsd:nonNegativeInteger
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty dcat:contactPoint ;
+                               owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onClass <http://www.w3.org/2006/vcard/ns#Kind>
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty dcat:distribution ;
+                               owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onClass dcat:Distribution
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty dcat:keyword ;
+                               owl:minCardinality "1"^^xsd:nonNegativeInteger
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty dcat:landingPage ;
+                               owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+                               owl:onClass foaf:Document
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty <http://purl.org/dc/terms/identifier> ;
+                               owl:cardinality "1"^^xsd:nonNegativeInteger
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty <http://purl.org/dc/terms/issued> ;
+                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onDataRange xsd:date
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty <http://purl.org/dc/terms/title> ;
+                               owl:cardinality "1"^^xsd:nonNegativeInteger
+                             ] .
+
+
+###  http://www.w3.org/ns/dcat#Distribution
+dcat:Distribution rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                    owl:onProperty <http://purl.org/dc/terms/description> ;
+                                    owl:minCardinality "1"^^xsd:nonNegativeInteger
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty <http://purl.org/dc/terms/format> ;
+                                    owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                    owl:onClass <http://purl.org/dc/terms/MediaType>
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty <http://purl.org/dc/terms/license> ;
+                                    owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                    owl:onClass <http://purl.org/dc/terms/LicenseDocument>
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty <http://purl.org/dc/terms/rights> ;
+                                    owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                    owl:onClass <http://purl.org/dc/terms/RightsStatement>
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty knora-meta:isDefinedBy ;
+                                    owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                    owl:onClass owl:Ontology
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty knora-meta:versionInfo ;
+                                    owl:minCardinality "1"^^xsd:nonNegativeInteger
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty dcat:accessURL ;
+                                    owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+                                    owl:onClass rdfs:Resource
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty dcat:mediaType ;
+                                    owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+                                    owl:onClass <http://purl.org/dc/terms/MediaType>
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty <http://purl.org/dc/terms/title> ;
+                                    owl:minCardinality "1"^^xsd:nonNegativeInteger
+                                  ] .
+
+
+###  http://xmlns.com/foaf/0.1/Organization
+foaf:Organization rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                    owl:onProperty foaf:homepage ;
+                                    owl:minCardinality "0"^^xsd:nonNegativeInteger
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty foaf:name ;
+                                    owl:minCardinality "1"^^xsd:nonNegativeInteger
+                                  ] .
+
+
+###  http://xmlns.com/foaf/0.1/Person
+foaf:Person rdfs:subClassOf [ rdf:type owl:Restriction ;
+                              owl:onProperty foaf:familyName ;
+                              owl:minCardinality "1"^^xsd:nonNegativeInteger
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty foaf:givenName ;
+                              owl:minCardinality "1"^^xsd:nonNegativeInteger
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty frapo:hasORCID ;
+                              owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty knora-meta:isMemberOf ;
+                              owl:minCardinality "0"^^xsd:nonNegativeInteger
+                            ] .
+
+
+
+

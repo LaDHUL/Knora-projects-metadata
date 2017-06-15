@@ -1,7 +1,7 @@
 # Knora-projects-metadata
 Metadata ontology for Knora Projects
 
-This ontology is an attempt to define the common metadata required for humanities datasets hosted hosted within [Knora](https://github.com/dhlab-basel/Knora) framework.
+This ontology is an attempt to define the common metadata required for humanities datasets hosted within [Knora](https://github.com/dhlab-basel/Knora) framework.
 
 According to the **FAIR principles** and **SFNS recommandation**, these metadata should be made available in a separate files from the project-specific ontology and the dataset itself. See http://www.snf.ch/en/theSNSF/research-policies/open_research_data/Pages/data-management-plan-dmp-guidelines-for-researchers.aspx: 
 

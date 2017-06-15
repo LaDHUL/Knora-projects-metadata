@@ -131,6 +131,12 @@
                                     rdfs:isDefinedBy <http://purl.org/dc/terms/> .
 
 
+### http://purl.org/cerif/frapo/isFundedBy
+<http://purl.org/cerif/frapo/isFundedBy> rdf:type owl:ObjectProperty ;
+                                    rdfs:label "is funded by"@en ;
+                                    rdfs:comment "An object property linking something to the funding that funds it (i.e. that finances or pays for it), or to the funding agency providing that funding. This flexibility is given because of alternative usages of the English word 'funds'."@en ;
+                                    rdfs:isDefinedBy <http://purl.org/cerif/frapo/> .
+
 ###  http://www.knora.org/ontology/metadata#isDefinedBy
 knora-meta:isDefinedBy rdf:type owl:ObjectProperty ;
 				rdfs:subPropertyOf <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> ;
